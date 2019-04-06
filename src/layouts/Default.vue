@@ -34,6 +34,8 @@ export default {
 @import url("https://fonts.googleapis.com/css?family=Lora:400,700|Merriweather:300,400");
 :root {
   --main-color: #6562e8;
+  --main-font: "Merriweather", serif;
+  --second-font: "Lora", serif;
 }
 * {
   padding: 0;

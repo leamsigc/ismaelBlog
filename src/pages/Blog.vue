@@ -36,8 +36,17 @@ export default {
 </script>
 <style>
 .hero-blog {
-  min-width: 100vw;
-  text-align: center;
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: center;
   align-items: center;
+  flex-direction: column;
+  min-width: 100vw;
+  background: var(--main-color);
+}
+.hero-blog > * {
+  text-align: left;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 </style>

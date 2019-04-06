@@ -29,9 +29,8 @@ export default {
 
 
 <style>
-.blog-template > :not(.header),
-.blog-template > :not(.hero) {
-  max-width: 760px;
+.blog-template > :not(.header) {
+  max-width: 1200px;
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
