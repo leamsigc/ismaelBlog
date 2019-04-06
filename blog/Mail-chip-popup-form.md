@@ -1,57 +1,57 @@
 ---
-title: Mailchip Post 
+title: Mailchimp pop-up form not working:solved 
 ---
 
-# Mailchip pop form not working
+# Mailchimp pop-up form not working:solved
 
-# Deployment using FAKE
+## MailChimp javascript code is that the  Pop-Up doesn't work on WordPress websites. 
 
-<div class="alert alert-info">
-    <h5>INFO</h5>
-    <p>Fake.Deploy is no longer part of FAKE 5 and is considered obsolete and fully replaced by modern deployment systems (puppet, chef, PowerShell DSC, ...). <a href"https://github.com/fsharp/FAKE/issues/1820">Announcement</a>
-    You can still use fake scripts on those alternative deployment systems. Just download the fake binaries and run your scripts.</p>
-</div>
+<h5>PROBLEM:</h5>
+<p><strong>MailChimp</strong> is one of the best solutions to get users to subscribe to any newsletter or collect their email addresses. One of the common problems that we encounter regularly at Web Daytona with <strong>MailChimp javascript code</strong> is that the <strong> Pop-Up doesn't work</strong> on WordPress websites</p>
+<br>
 
-This introduction assumes Fake.Deploy.exe is available in the current directory or path.
+We added the **MailChimp Subscriber Pop-Up** embed code to our clients  **WordPress** websites,but nothing would happen after the website loaded in. After countless hours of research on  Google, I’ve noticed that many others are experiencing the same problem in WordPress.
+<br>
+## Console Error
+```javascript
+Loading failed for the 
+<script> with source 
+https://downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js
+```
+<br>
+The problems is that when we put the mailchimp pop-up code for wordpress in the header.php file, the Mailchimp script depends on jquery and the mailchimp script is then fetched first from the server and  jquery after. This ultimately left the mailchimp script in a dead end without the dependency that it needs.
+<br>
 
-## Introduction
+#### Example of mailchimp  code for the pop-up doesn't work :
+```javascript 
+  <script id="mcjs">
+   !function(c,h,i,m,p)
+   {m=c.createElement(h),
+   p=c.getElementsByTagName(h)[0],
+   m.async=1,m.src=i,
+   p.parentNode.insertBefore(m,p)}
+   (document,"script",
+   "//chimpstatic.com/mcjs-connected/js/users/xxxxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxxxx.js");
+   </script>
 
-The FAKE deployment tool allows users to deploy applications to remote computers and to run scripts on these remote agents. A typical scenario maybe as follows:
+```
+#### Here is the solution that we found:
 
 
-* Build an application -> run tests -> create artifacts and save on build server (Classical FAKE build workflow)
-* Extract artifacts from build server and create a NuGet deployment package
-* Push the NuGet package to the desired computer this will run the package's FAKE script on the remote machine
+1. Go Appearance > editor > footer.php
+![Header php file](headerphpfileLeamsigc.png)
 
-## Installing Fake deployment services
 
-In order to deploy application to a remote computer a deployment agent needs to be running on that server.
+2. Paste the Mailchimp script code before the body closing tag, save, and go to your website.![Header php file](mailchippop-uperrorjavascript.png)
 
-The simplest way to install the agent on a remote server is to use the [Nuget command line tool](http://docs.nuget.org/consume/installing-nuget) to download the FAKE nuget and extract the binaries into a _fake/tools_ subfolder.  Once  _nuget.exe_ is available on the path, use the following command in a command shell:
 
-    [lang=batchfile]
-    nuGet.exe Install FAKE -ExcludeVersion
 
-Adding the _.../fake/tools_ folder to the path will simplify executing the Fake.Deploy.exe.
+3. Clear the cache and Hard Reload your website If your in Google Chrome. Open the inspector and right click the” reload/refresh”, then click “empty cache and hard reload”.![clear cache chrome](clearcacheChromeLeamsigcWebDeveloper.png)
 
-To run an agent in a console, simply run:
 
-    Fake.Deploy
 
-To install a windows service on that agent:
+<br>
 
-   * Open a command prompt with Administrator Privilege
-   * Run Fake.Deploy /install
+#### You’ve just learned the steps needed to take care of your Mailchimp pop-up not working. 
 
-By default the service starts a listener on port 8080. This can however be configured by editing the Fake.Deploy.exe.config file
-and changing
-
-    <add key="ServerName" value="localhost" />
-    <add key="Port" value="8080" />
-
-to the desired value. If you use the asterisk as port no. then Fake.Deploy will assign the first open port behind of 8080.
-
-To ensure the service is running you can navigate to http://{computer}:{port}/fake/ and you should be presented with a page giving the
-status if the service
-
-## Uninstalling Fake deployment services
+<br>

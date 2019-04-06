@@ -27,11 +27,20 @@ export default {
 
 <style >
 .blog--post {
-  padding-top: 6rem;
+  padding: 6rem 1rem;
   max-width: 1000px;
   margin: 0 auto;
 }
-
+.blog--post > * {
+  font-family: var(--main-font);
+  line-height: 1.5;
+  text-align: justify;
+}
+.blog--post h1,h2,h3,h4,h5,h6{
+  font-family: var(--second-font);
+  margin: 2rem 0;
+  text-align:center
+}
 h1 {
   text-align: center;
   font-size: 3rem;
@@ -39,24 +48,7 @@ h1 {
   font-family: var(--second-font);
   margin-bottom: 2rem;
 }
-h2 {
-  margin: 1rem 0;
-}
-p {
-  font-family: var(--main-font);
-  line-height: 1.5;
-  text-align: justify;
-}
 ul {
   padding: 1rem 2rem;
 }
 </style>
-
-
-// query{
-//   post(path:"/blog/second-blog-post"){
-//     title
-//     path
-//     content
-//   }
-// }
